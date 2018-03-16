@@ -1,10 +1,13 @@
 const fs = require("fs");
-const express = require('express')
-const app = express()
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(cors());
 
 app.get('/', (req, res) => res.send('Creating note.'))
 
-app.post('/', function (req, res) {
+app.post('/create', function (req, res) {
   res.send('Got a POST request');
   fs.appendFile("something.txt", "Hello boo!");
   console.log(req.body);

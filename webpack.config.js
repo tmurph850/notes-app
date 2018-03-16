@@ -1,21 +1,33 @@
 const path = require('path');
+//const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 /*const UglifyJSPlugin = require('uglifyjs-webpack-plugin');*/
 
-module.exports = {
+const config = {
     entry: [
         'babel-polyfill',
         './client/js/app.js'
     ],
-  output: {
-        filename: 'app.js',
-        path: path.join(__dirname, 'dist'),
-  },
-    //watch: true,
+    output: {
+      filename: 'app.js',
+      path: path.resolve(__dirname, 'dist')
+    },
+    devtool: 'inline-source-map',
     devServer: {
-      contentBase: "./dist",
+      contentBase: './dist',
+      hot: true,
       port: 9000,
-      historyApiFallback: true
+      historyApiFallback: true,
+      publicPath: '/',
+      proxy: {
+        "/create": {
+          target: "http://localhost:3000",
+          pathRewrite: {"^/create" : ""},
+          secure: false,
+          changeOrigin: true
+        }
+      }
     },
     module: {
         rules: [
@@ -44,19 +56,13 @@ module.exports = {
     },
     mode: 'development',
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('development')
-            }
-        })/*,
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }) */
-    ],
-    externals: {
-
-  },
-    devtool: 'source-map'
+      //new CleanWebpackPlugin(['dist']),
+      // new HtmlWebpackPlugin({
+      //   title: 'Hot Module Replacement'
+      // }),
+     new webpack.NamedModulesPlugin(),
+     new webpack.HotModuleReplacementPlugin()
+    ]
 };
+
+module.exports = config;
