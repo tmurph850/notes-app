@@ -1,0 +1,14 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "THE Notes App.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Murphy",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
