@@ -1,7 +1,9 @@
 import axios from 'axios';
+import '../app.min.css';
 
 let theTarget = document.getElementsByClassName("noteButton");
 let theInput = document.getElementsByClassName("noteInput");
+let theTextArea = document.getElementById("note-body");
 
 const createNew = (noteTitle, noteBody) => {
   const notePost = axios({
@@ -20,10 +22,11 @@ const createNew = (noteTitle, noteBody) => {
 };
 
 const handleClick = () => {
-  let bodyVal = theInput[0].value;
+  let titleVal = theInput[0].value;
+  let bodyVal = theTextArea.value;
 
-  console.log(bodyVal);
-  createNew(bodyVal, bodyVal);
+  console.log(titleVal, bodyVal);
+  createNew(titleVal, bodyVal);
 };
 
 theTarget[0].addEventListener('click', handleClick);
