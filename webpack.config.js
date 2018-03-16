@@ -1,5 +1,5 @@
 const path = require('path');
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 /*const UglifyJSPlugin = require('uglifyjs-webpack-plugin');*/
@@ -56,10 +56,11 @@ const config = {
     },
     mode: 'development',
     plugins: [
-      //new CleanWebpackPlugin(['dist']),
-      // new HtmlWebpackPlugin({
-      //   title: 'Hot Module Replacement'
-      // }),
+      new HtmlWebpackPlugin({
+        title: 'Notes App',
+        // Load a custom template (lodash by default see the FAQ for details)
+        template: './client/index.html'
+      }),
      new webpack.NamedModulesPlugin(),
      new webpack.HotModuleReplacementPlugin()
     ]

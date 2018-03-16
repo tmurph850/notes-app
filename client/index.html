@@ -9,15 +9,17 @@
 </head>
 <body>
   <div class="create-new col-md-6">
-    <input class="noteInput" type="text" />
+    <div class="form-group">
+        <label class="noteInput-label" for="noteInput">Note Title</label>
+        <input class="noteInput" id="noteInput" type="text" />
+    </div>
     <fieldset class="form-group" id="the-fieldset">
       <div class="form-group">
-          <label class="comments-label" htmlFor="question-comments">Note Body</label>
-          <textarea class="form-control" id="note-body" rows="3"></textarea>
+          <label class="note-body-label" for="note-body">Note Body</label>
+          <textarea class="form-control note-body" id="note-body" rows="3"></textarea>
       </div>
     </fieldset>
     <button type="button" class="noteButton">Submit</button>
   </div>
-  <script src="/app.js" type="text/javascript"></script>
 </body>
 </html>
