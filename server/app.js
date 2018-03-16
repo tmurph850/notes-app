@@ -1,15 +1,20 @@
 const fs = require("fs");
+const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
+
 const app = express();
 
 app.use(cors());
-
-app.get('/', (req, res) => res.send('Creating note.'))
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.post('/create', function (req, res) {
   res.send('Got a POST request');
-  fs.appendFile("something.txt", "Hello boo!");
+  fs.writeFile(`${req.body.noteTitle}.txt`, req.body.noteBody, (err) => {
+    if (err) throw err;
+    console.log(`The file ${req.body.noteTitle} has been saved!`);
+  });
   console.log(req.body);
 });
 

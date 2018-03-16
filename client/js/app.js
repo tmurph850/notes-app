@@ -14,8 +14,8 @@ const createNew = (noteTitle, noteBody) => {
     }
   });
 
-  notePost.then(({data}) => {
-    console.log(data);
+  notePost.then((response) => {
+    console.log(response);
   })
 };
 

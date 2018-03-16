@@ -8,8 +8,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-  <div class="create-new">
-    <input class="noteInput" type="text" /><button type="button" class="noteButton">Submit</button>
+  <div class="create-new col-md-6">
+    <input class="noteInput" type="text" />
+    <fieldset class="form-group" id="the-fieldset">
+      <div class="form-group">
+          <label class="comments-label" htmlFor="question-comments">Note Body</label>
+          <textarea class="form-control" id="note-body" rows="3"></textarea>
+      </div>
+    </fieldset>
+    <button type="button" class="noteButton">Submit</button>
   </div>
   <script src="/app.js" type="text/javascript"></script>
 </body>
